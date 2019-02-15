@@ -7,16 +7,20 @@
 //
 
 import UIKit
+import MapKit
 
 class TableViewController: UITableViewController {
-    var notes: [Note] = [Note(title: "Reseaux", contenu: "pouloulou", dateCreation: Date(timeIntervalSince1970: 1545654354), localisation: "Belfort"),
-                         Note(title: "Liste de course", contenu: "baguette - frommage - yolo", dateCreation: Date(timeIntervalSince1970: 1445654354), localisation: "Champagney"),
+    var notes: [Note] = [Note(title: "Reseaux", contenu: "pouloulou", dateCreation: Date(timeIntervalSince1970: 1545654354), localisation: CLLocation.init(latitude: 150, longitude: 150)),
+     
+                              Note(title: "Liste de course", contenu: "baguette - frommage - yolo", dateCreation: Date(timeIntervalSince1970: 1445654354), localisation: CLLocation.init(latitude: 100, longitude: 100)),
+   /*
     Note(title: "flemme", contenu: "zzzzzzzzzzz", dateCreation: Date(timeIntervalSince1970: 1585654354), localisation: "everywhere"),
     Note(title: "helloWorld", contenu: "HelloWorld,toto,titi", dateCreation: Date(timeIntervalSince1970: 1545654354), localisation: "Belfort"),
     Note(title: "Reseaux", contenu: "pouloulou", dateCreation: Date(timeIntervalSince1970: 1545424354), localisation: "Belfort"),
     Note(title: "Reseaux", contenu: "pouloulou", dateCreation: Date(timeIntervalSince1970: 1548054354), localisation: "Belfort"),
     Note(title: "Reseaux", contenu: "pouloulou", dateCreation: Date(timeIntervalSince1970: 1549154354), localisation: "Belfort")
-    ]
+        */
+        ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +44,10 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return notes.count
+    }
+    
+    @IBAction func unwindToNoteTableView(segue: UIStoryboardSegue){
+        
     }
 
     
@@ -96,14 +104,18 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "EditNote" {
+            let indexPath = tableView.indexPathForSelectedRow!
+            let note = notes[indexPath.row]
+            let navigationController = segue.destination as! UINavigationController
+            let addEditController = navigationController.topViewController as! AddEditNoteTableViewController addEditController.note = note
+            
+        }
     }
-    */
 
 }
