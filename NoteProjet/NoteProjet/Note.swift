@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import MapKit
 
 class Note{
     var title: String
     var contenu: String
     var dateCreation: Date
-    var localisation: String
+    var localisation: CLLocation
     
-    init(title: String, contenu: String, dateCreation: Date, localisation: String) {
+    init(title: String, contenu: String, dateCreation: Date, localisation: CLLocation) {
         self.title = title
         self.contenu = contenu
         self.dateCreation = dateCreation

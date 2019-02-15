@@ -15,6 +15,7 @@
 		8717660A220DC11200A23D05 /* NoteProjetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87176609220DC11200A23D05 /* NoteProjetUITests.swift */; };
 		87176618220DC17600A23D05 /* NoteCellIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87176617220DC17600A23D05 /* NoteCellIdentifier.swift */; };
 		8717661A220DC1AF00A23D05 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87176619220DC1AF00A23D05 /* Note.swift */; };
+		87C352842216F95600E3F6B2 /* EditAddNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C352832216F95600E3F6B2 /* EditAddNote.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		8717660B220DC11200A23D05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87176617220DC17600A23D05 /* NoteCellIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCellIdentifier.swift; sourceTree = "<group>"; };
 		87176619220DC1AF00A23D05 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		87C352832216F95600E3F6B2 /* EditAddNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddNote.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				871765E9220DC10800A23D05 /* AppDelegate.swift */,
 				871765ED220DC10800A23D05 /* Main.storyboard */,
+				87C352832216F95600E3F6B2 /* EditAddNote.swift */,
 				87176619220DC1AF00A23D05 /* Note.swift */,
 				87176617220DC17600A23D05 /* NoteCellIdentifier.swift */,
 				871765F0220DC11100A23D05 /* Assets.xcassets */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				871765EA220DC10800A23D05 /* AppDelegate.swift in Sources */,
+				87C352842216F95600E3F6B2 /* EditAddNote.swift in Sources */,
 				87176618220DC17600A23D05 /* NoteCellIdentifier.swift in Sources */,
 				8717661A220DC1AF00A23D05 /* Note.swift in Sources */,
 			);
