@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class EditAddNote: UITableViewController {
 
@@ -32,6 +33,15 @@ class EditAddNote: UITableViewController {
         */
             
         }
+        
+        var location = CLLocationCoordinate2DMake(47.5946573,6.9207716)
+        
+        var annotation = MKPointAnnotation()
+        annotation.coordinate=location
+        annotation.title = "Belfort"
+        
+        
+
         
         updateSaveButtonState()
 
