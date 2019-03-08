@@ -10,37 +10,46 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class EditAddNote: UITableViewController {
+class EditAddNote: UITableViewController, CLLocationManagerDelegate{
 
     var note: Note?
+    
+    var locationManager = CLLocationManager()
     
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contenuTextField: UITextField!
     @IBOutlet weak var mapKitView: MKMapView!
-    
+    var location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(00, 00)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.locationManager.requestWhenInUseAuthorization()
+    
+                
         if let note = note {
             
             titleTextField.text = note.title
             contenuTextField.text = note.contenu
-        /*    mapKitView.centerCoordinate = note.localisation
-        */
+            location = CLLocationCoordinate2DMake(note.longitude ,note.latitude)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate=location
+            annotation.title = note.title
+                mapKitView.addAnnotation(annotation)
+            mapKitView.setCenter(location, animated: true)
             
         }
         
-        var location = CLLocationCoordinate2DMake(47.5946573,6.9207716)
-        
-        var annotation = MKPointAnnotation()
-        annotation.coordinate=location
-        annotation.title = "Belfort"
         
         
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
 
         
         updateSaveButtonState()
@@ -128,13 +137,25 @@ class EditAddNote: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        let userLocation = locations.last
+        let viewRegion = MKCoordinateRegionMakeWithDistance((userLocation?.coordinate)!, 600, 600)
+        self.mapKitView.setRegion(viewRegion, animated: true)
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "SaveUnwind" {
             let title = titleTextField.text ?? ""
             let contenu = contenuTextField.text ?? ""
             
-            note = Note(title: title, contenu: contenu, dateCreation: Date.init(), localisation: CLLocation.init(latitude: 150, longitude: 150))
+        let userLocation = locationManager.
+            
+            
+            note = Note(title: title, contenu: contenu, dateCreation: Date.init(), longitude: locValue.longitude, latitude: locValue.latitude)
         }
         
     }

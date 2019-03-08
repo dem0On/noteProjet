@@ -10,9 +10,8 @@ import UIKit
 import MapKit
 
 class TableViewController: UITableViewController {
-    var notes: [Note] = [Note(title: "Reseaux", contenu: "pouloulou", dateCreation: Date(timeIntervalSince1970: 1545654354), localisation: CLLocation.init(latitude: 150, longitude: 150)),
-     
-                              Note(title: "Liste de course", contenu: "baguette - frommage - yolo", dateCreation: Date(timeIntervalSince1970: 1445654354), localisation: CLLocation.init(latitude: 100, longitude: 100)),
+    var notes: [Note] = [Note(title: "Reseaux", contenu: "pouloulou", dateCreation: Date(timeIntervalSince1970: 1545654354),longitude: 48.254,latitude: 9.58478),
+                         Note(title: "Liste de course", contenu: "baguette - frommage - yolo", dateCreation: Date(timeIntervalSince1970: 1445654354), longitude: 47.649277,latitude: 6.831142)
    /*
     Note(title: "flemme", contenu: "zzzzzzzzzzz", dateCreation: Date(timeIntervalSince1970: 1585654354), localisation: "everywhere"),
     Note(title: "helloWorld", contenu: "HelloWorld,toto,titi", dateCreation: Date(timeIntervalSince1970: 1545654354), localisation: "Belfort"),
@@ -113,7 +112,8 @@ class TableViewController: UITableViewController {
             let indexPath = tableView.indexPathForSelectedRow!
             let note = notes[indexPath.row]
             let navigationController = segue.destination as! UINavigationController
-            
+            let addEditController = navigationController.topViewController as! EditAddNote
+            addEditController.note = note
             
         }
     }

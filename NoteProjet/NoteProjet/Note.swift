@@ -13,13 +13,15 @@ class Note{
     var title: String
     var contenu: String
     var dateCreation: Date
-    var localisation: CLLocation
+    var longitude: Double
+    var latitude: Double
     
-    init(title: String, contenu: String, dateCreation: Date, localisation: CLLocation) {
+    init(title: String, contenu: String, dateCreation: Date, longitude: Double, latitude: Double) {
         self.title = title
         self.contenu = contenu
         self.dateCreation = dateCreation
-        self.localisation = localisation
+        self.longitude = longitude
+        self.latitude = latitude
         
     }
 }
