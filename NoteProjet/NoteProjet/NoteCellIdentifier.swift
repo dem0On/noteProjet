@@ -113,7 +113,7 @@ class TableViewController: UITableViewController {
             let indexPath = tableView.indexPathForSelectedRow!
             let note = notes[indexPath.row]
             let navigationController = segue.destination as! UINavigationController
-            let addEditController = navigationController.topViewController as! AddEditNoteTableViewController addEditController.note = note
+            
             
         }
     }
